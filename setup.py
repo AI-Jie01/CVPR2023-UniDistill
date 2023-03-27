@@ -4,10 +4,10 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setup(
-    name="Perceptron",
+    name="Unidistill",
     version="0.0.1",
     author="Megvii",
-    author_email="lizeming@megvii.com",
+    author_email="zhoushengchao@megvii.com",
     description="Model/Expriments for 3D Detection",
     long_description=long_description,
     long_description_content_type="text/markdown",

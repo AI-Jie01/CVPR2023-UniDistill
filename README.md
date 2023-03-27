@@ -1,6 +1,6 @@
-# UniDistill: A Universal Cross-Modality Knowledge Distillation Framework for 3D Object Detection in Bird’s-Eye View
+# UniDistill: A Universal Cross-Modality Knowledge Distillation Framework for 3D Object Detection in Bird's-Eye View
 
-This is the official implementation of ***UniDistill*** (CVPR 2023). UniDistill offers a universal cross-modality knowledge distillation framework for different teacher and student modality combinations. The core idea is aligning the intermediate BEV features and response features that are produced by all BEV detectors.
+This is the official implementation of ***UniDistill*** **(CVPR2023 highlight✨, 10% of accepted papers)**. UniDistill offers a universal cross-modality knowledge distillation framework for different teacher and student modality combinations. The core idea is aligning the intermediate BEV features and response features that are produced by all BEV detectors.
 
 ## Getting Started
 ### Installation
@@ -96,7 +96,7 @@ Put the checkpoint of the teachers to `perceptron/exps/multisensor_fusion/BEVFus
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_<MODALITY_2>_exp_distill_<MODALITY_1>.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml
 ```
-## Citation 
+## Citation
 If you find this project useful in your research, please consider citing:
 
 ```

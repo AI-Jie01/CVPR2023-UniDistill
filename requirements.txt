@@ -1,7 +1,5 @@
 clearml
 onnxoptimizer==0.2.5
-cvpack2_snapdet==0.0.5.beta
-dpflow
 easydict
 grpcio<=1.43.0
 loguru>=0.5.3
@@ -15,7 +13,6 @@ opencv-python-headless
 pandas
 pylas
 pyquaternion
-refile
 scikit-image
 scipy
 spconv-cu111>=2.1.12
