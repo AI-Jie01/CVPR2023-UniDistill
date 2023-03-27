@@ -1,6 +1,3 @@
-# encoding: utf-8
-# flake8: noqa: F401
-
 from .callbacks import *
 from .cli import *
 from .executors import *

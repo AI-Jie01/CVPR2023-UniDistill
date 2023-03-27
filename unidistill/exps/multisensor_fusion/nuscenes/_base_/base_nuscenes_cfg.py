@@ -84,7 +84,7 @@ _AUG_CFG = dict(
 )
 
 DATA_CFG = dict(
-    root_path="s3://generalDetection/3DDatasets/nuScenes/",
+    root_path="/data/dataset",
     lidar_key_list=["LIDAR_TOP"],
     img_key_list=[
         "CAM_BACK",

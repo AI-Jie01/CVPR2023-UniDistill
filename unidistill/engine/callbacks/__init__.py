@@ -1,6 +1,3 @@
-# encoding: utf-8
-# flake8: noqa: F401
-
 from .base_callback import *
 from .checkpoint_callback import *
 from .clearml_callback import *

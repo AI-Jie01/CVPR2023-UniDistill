@@ -2,9 +2,6 @@ __all__ = ["Callback", "MasterOnlyCallback"]
 
 
 class Callback:
-
-    # callback enabled rank list
-    # None means callback is always enabled
     enabled_rank = None
 
     def setup(self, executor):

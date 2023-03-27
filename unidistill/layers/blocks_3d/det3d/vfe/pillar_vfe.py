@@ -106,7 +106,6 @@ class PillarVFE(VFETemplate):
         return paddings_indicator
 
     def forward(self, voxel_features, voxel_coords, voxel_num_points, **kwargs):
-
         points_mean = voxel_features[:, :, :3].sum(
             dim=1, keepdim=True
         ) / voxel_num_points.type_as(voxel_features).view(-1, 1, 1)

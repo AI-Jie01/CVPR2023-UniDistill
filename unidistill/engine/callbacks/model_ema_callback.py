@@ -4,7 +4,6 @@ from unidistill.engine.callbacks import MasterOnlyCallback
 
 class EMACallback(MasterOnlyCallback):
     def before_train(self, trainer):
-        # Todo (@lizeming@megvii.com): delete manually specified device
         from torch.nn.modules.batchnorm import SyncBatchNorm
 
         bn_model_list = list()

@@ -7,7 +7,6 @@ numba
 numpy
 numpy-quaternion
 nuscenes-devkit
-once-devkit>=0.0.3
 open3d
 opencv-python-headless
 pandas

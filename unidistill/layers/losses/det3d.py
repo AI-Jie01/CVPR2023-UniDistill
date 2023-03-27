@@ -134,7 +134,7 @@ class WeightedSmoothL1Loss(nn.Module):
             loss = torch.abs(diff)
         else:
             n = torch.abs(diff)
-            loss = torch.where(n < beta, 0.5 * n ** 2 / beta, n - 0.5 * beta)
+            loss = torch.where(n < beta, 0.5 * n**2 / beta, n - 0.5 * beta)
 
         return loss
 
@@ -448,10 +448,10 @@ class CenterNetSmoothRegLoss(nn.Module):
 
         abs_diff = torch.abs(regr - gt_regr)
 
-        abs_diff_lt_1 = torch.le(abs_diff, 1 / (sigma ** 2)).type_as(abs_diff)
+        abs_diff_lt_1 = torch.le(abs_diff, 1 / (sigma**2)).type_as(abs_diff)
 
         loss = abs_diff_lt_1 * 0.5 * torch.pow(abs_diff * sigma, 2) + (
-            abs_diff - 0.5 / (sigma ** 2)
+            abs_diff - 0.5 / (sigma**2)
         ) * (1.0 - abs_diff_lt_1)
 
         loss = loss.transpose(2, 0).contiguous()

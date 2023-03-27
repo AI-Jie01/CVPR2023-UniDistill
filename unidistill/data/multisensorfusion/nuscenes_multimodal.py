@@ -43,7 +43,7 @@ def load_pkl(file):
 
 
 class NuscenesMultiModalData(NuscenesMultiModalDataset):
-    r""" This class is Nuscenes multi-modal dataset, such as lidar, camera."""
+    r"""This class is Nuscenes multi-modal dataset, such as lidar, camera."""
 
     def __init__(
         self,
@@ -96,10 +96,10 @@ class NuscenesMultiModalData(NuscenesMultiModalDataset):
         self.det_augmentor = self.get_det_augmentor(aug_cfg)
 
         if self.with_seg:
-            # TODO: @Wen Tiancheng
+            # TODO:
             self.seg_augmentor = transforms3d.Compose([...])
 
-        # TODO: Need to remove @Wang Ningzi
+        # TODO:
         if not self.is_train:
             meta_file = "/data/dataset/nuscenes_v1.0-trainval_meta.pkl"
             self.meta_info = load_pkl(meta_file)
@@ -290,9 +290,7 @@ class NuscenesMultiModalData(NuscenesMultiModalDataset):
                 intrin_mats.append(intrin_mat)
                 ida_mats.append(torch.from_numpy(data_dict["ida_mat"][cam_name]))
                 sensor2sensor_mats.append(torch.eye(4, 4))
-            ret_data["imgs"] = torch.stack(imgs).unsqueeze(
-                0
-            )  # TODO: modify after finish CollectCameraSweeps
+            ret_data["imgs"] = torch.stack(imgs).unsqueeze(0)
             bda_mat = data_dict["bda_mat"] if "bda_mat" in data_dict else torch.eye(4)
             ret_data["mats_dict"] = dict(
                 sensor2ego_mats=torch.stack(sensor2ego_mats).unsqueeze(0),

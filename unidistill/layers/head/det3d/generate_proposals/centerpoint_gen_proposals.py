@@ -153,7 +153,6 @@ class CenterPointGenProposals(BaseGenProposals):
         raw_rot=False,
         task_id=-1,
     ):
-
         batch, cat, _, _ = heat.size()
         K = self.nms_pre_max_size_use  # topK selected
 

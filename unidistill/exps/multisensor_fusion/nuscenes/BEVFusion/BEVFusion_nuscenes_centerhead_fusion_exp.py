@@ -119,7 +119,6 @@ class DetHead(nn.Module):
     def forward(self, x: torch.tensor, gt_boxes: torch.tensor) -> Any:
         forward_ret_dict = self.dense_head(x, gt_boxes)
 
-        r"""TODO @wangningzi : Need to rewrite """
         if self.training:
             for _, encoding in forward_ret_dict["box_encoding"].items():
                 encoding[torch.isinf(encoding)] = 0
@@ -161,9 +160,6 @@ class BEVFusionCenterHead(BEVFusion):
             return (
                 ret_dict,
                 tb_dict,
-                model_output,
-                x[0],
-                forward_ret_dict["multi_head_features"],
                 {},
             )
         else:

@@ -292,7 +292,6 @@ class MultiModalGTSampling(torch.nn.Module):
         super().__init__()
 
     def forward(self, data_dict):
-
         return data_dict
 
 

@@ -95,7 +95,6 @@ def get_evaluation_results(
     render_curves: bool = False,
     **kwargs
 ) -> Dict:
-
     if config_path == "":
         cfg = config_factory("detection_cvpr_2019")
     else:

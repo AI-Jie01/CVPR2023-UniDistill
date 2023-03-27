@@ -1,5 +1,3 @@
-# This file is modified from https://github.com/traveller59/second.pytorch
-
 from collections import Iterable
 
 import torch
@@ -113,7 +111,6 @@ def is_tuple(x) -> bool:
     return isinstance(x, tuple)
 
 
-# copy from fastai.
 class OptimWrapper:
     "Basic wrapper around `opt` to simplify hyper-parameters changes."
 
@@ -164,13 +161,11 @@ class OptimWrapper:
                 self.opt.param_groups[1::2],
             ):
                 for p in pg1["params"]:
-                    # When some parameters are fixed:  Shaoshuai Shi
                     if p.requires_grad is False:
                         continue
                     p.data.mul_(1 - wd * lr)
                 if self.bn_wd:
                     for p in pg2["params"]:
-                        # When some parameters are fixed:  Shaoshuai Shi
                         if p.requires_grad is False:
                             continue
                         p.data.mul_(1 - wd * lr)

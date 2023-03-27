@@ -27,7 +27,6 @@ class NMSFreeCoder(BaseBBoxCoder):
         score_threshold=None,
         num_classes=10,
     ):
-
         self.pc_range = pc_range
         self.voxel_size = voxel_size
         self.post_center_range = post_center_range

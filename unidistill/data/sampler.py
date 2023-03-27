@@ -63,7 +63,6 @@ class InfiniteSampler(Sampler):
             if self._shuffle:
                 yield from torch.randperm(self._size, generator=g).tolist()
             else:
-                # yield from torch.arange(self._size)
                 yield from list(range(self._size))
 
     def __len__(self):

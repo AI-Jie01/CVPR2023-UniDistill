@@ -144,7 +144,6 @@ class Trainer(BaseExecutor):
 
                     # avg ext_dict
                     for k, v in ext_dict.items():
-                        # TODO: support general ext_dict value types
                         if isinstance(v, torch.Tensor):
                             if k not in avg_ext_dict:
                                 avg_ext_dict[k] = v / train_times
@@ -202,7 +201,6 @@ class Trainer(BaseExecutor):
     @staticmethod
     def optimizer_to(optim, device):
         for param in optim.state.values():
-            # Not sure there are any global tensors in the state dict
             if isinstance(param, torch.Tensor):
                 param.data = param.data.to(device)
                 if param._grad is not None:

@@ -70,7 +70,6 @@ class NuscenesMultiModalDataset(Dataset):
         lidar_with_timestamp=True,
         **kwargs
     ):
-
         assert data_split in [
             "training",
             "validation",

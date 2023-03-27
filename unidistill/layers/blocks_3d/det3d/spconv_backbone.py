@@ -18,7 +18,6 @@ def post_act_block(
     conv_type="subm",
     norm_fn=None,
 ):
-
     if conv_type == "subm":
         conv = spconv.SubMConv3d(
             in_channels,

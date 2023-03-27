@@ -22,14 +22,14 @@ def box_camera_to_lidar(data, r_rect, velo2cam):
 def corners_nd(dims, origin=0.5):
     ndim = int(dims.shape[1])
     corners_norm = np.stack(
-        np.unravel_index(np.arange(2 ** ndim), [2] * ndim), axis=1
+        np.unravel_index(np.arange(2**ndim), [2] * ndim), axis=1
     ).astype(dims.dtype)
     if ndim == 2:
         corners_norm = corners_norm[[0, 1, 3, 2]]
     elif ndim == 3:
         corners_norm = corners_norm[[0, 1, 3, 2, 4, 5, 7, 6]]
     corners_norm = corners_norm - np.array(origin, dtype=dims.dtype)
-    corners = dims.reshape([-1, 1, ndim]) * corners_norm.reshape([1, 2 ** ndim, ndim])
+    corners = dims.reshape([-1, 1, ndim]) * corners_norm.reshape([1, 2**ndim, ndim])
     return corners
 
 
@@ -50,12 +50,7 @@ def center_to_corner_box2d(centers, dims, angles=None, origin=0.5):
 
 @numba.jit(nopython=True)
 def depth_to_points(depth, trunc_pixel):
-    num_pts = np.sum(
-        depth[
-            trunc_pixel:,
-        ]
-        > 0.1
-    )
+    num_pts = np.sum(depth[trunc_pixel:,] > 0.1)
     points = np.zeros((num_pts, 3), dtype=depth.dtype)
     x = np.array([0, 0, 1], dtype=depth.dtype)
     k = 0

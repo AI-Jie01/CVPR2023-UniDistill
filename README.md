@@ -32,7 +32,7 @@ The directory will be as follows.
 │   │   ├── v1.0-test
 |   |   ├── v1.0-trainval
 ```
-**Step 2.** Download the infos and put them in `/data/dataset/`
+**Step 2.** Download the [infos](https://drive.google.com/file/d/1UZzSSQiD3mr3Zsgj3MS-Hg5tix3-2ZKP/view?usp=share_link) and put them in `/data/dataset/`
 The directory will be as follows.
 ```
 ├── data
@@ -50,13 +50,8 @@ The directory will be as follows.
 ```
 
 ### Testing
-**Step 0.** Download the checkpoint models
-| Modality Combination      |   Download  |
-|---------------|:-----------:|
-|    Fusion&rarr;LiDAR  |  [Pre-trained](https://drive.google.com/file/d/1IV7e7G9X-61KXSjMGtQo579pzDNbhwvf/view?usp=share_link) |
-|  Fusion&rarr;Camera |  [Submission](https://drive.google.com/file/d/1wNVjxyTuCE3F88GT_TZSgBgdmkA61Fsi/view?usp=share_link) |
-|  LiDAR&rarr;Camera |  [Submission](https://drive.google.com/file/d/1sSkLBrWGm_rMB73cNHojGyQtz-hLBBTH/view?usp=share_link) |
-|  Camera&rarr;LiDAR |  [Submission](https://drive.google.com/file/d/1sSkLBrWGm_rMB73cNHojGyQtz-hLBBTH/view?usp=share_link) |
+**Step 0.** Download the [checkpoint models](https://drive.google.com/file/d/1TNqjJoqUhYP2_qZncPStF1mnRV4__sUB/view?usp=share_link) 
+
 **Step 1.**  Generate the result
 If the modality of checkpoint is camera, run the following command:
 ```shell
@@ -69,13 +64,8 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 **Step 2.**  Upload the result to the [evaluation server](https://eval.ai/web/challenges/challenge-page/356/)
 The result named "nuscenes_results.json" is in the folder "nuscenes" in the parent folder of the tested checkpoint.
 ### Evaluation
-**Step 0.** Download the checkpoint models
-| Modality Combination      |   Download  |
-|---------------|:-----------:|
-|    Fusion&rarr;LiDAR  |  [Pre-trained](https://drive.google.com/file/d/1IV7e7G9X-61KXSjMGtQo579pzDNbhwvf/view?usp=share_link) |
-|  Fusion&rarr;Camera |  [Submission](https://drive.google.com/file/d/1wNVjxyTuCE3F88GT_TZSgBgdmkA61Fsi/view?usp=share_link) |
-|  LiDAR&rarr;Camera |  [Submission](https://drive.google.com/file/d/1sSkLBrWGm_rMB73cNHojGyQtz-hLBBTH/view?usp=share_link) |
-|  Camera&rarr;LiDAR |  [Submission](https://drive.google.com/file/d/1sSkLBrWGm_rMB73cNHojGyQtz-hLBBTH/view?usp=share_link) |
+**Step 0.** Download the checkpoint models as in "Testing"
+
 **Step 1.**  Generate the result
 If the modality of checkpoint is camera, run the following command:
 ```shell
