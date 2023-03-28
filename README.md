@@ -18,7 +18,7 @@ python setup.py develop
 ```
 
 ### Data preparation
-**Step 0.** Download nuScenes official dataset.
+**Step 0.** Download [nuScenes official dataset](https://www.nuscenes.org/nuscenes).
 
 **Step 1.** Create a folder `/data/dataset/` and put the dataset in it.
 
@@ -50,16 +50,16 @@ The directory will be as follows.
 ```
 
 ### Testing
-**Step 0.** Download the [checkpoint models](https://drive.google.com/file/d/1TNqjJoqUhYP2_qZncPStF1mnRV4__sUB/view?usp=share_link) 
+**Step 0.** Download the [checkpoint models](https://drive.google.com/file/d/1TNqjJoqUhYP2_qZncPStF1mnRV4__sUB/view?usp=share_link)
 
 **Step 1.**  Generate the result
 If the modality of checkpoint is camera, run the following command:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --infer  --ckpt <PATH_TO_CHECKPOINT>
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --infer  --ckpt <PATH_TO_CHECKPOINT>
 ```
 If the modality of checkpoint is LiDAR, change the command as follow:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --infer  --ckpt <PATH_TO_CHECKPOINT>
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --infer  --ckpt <PATH_TO_CHECKPOINT>
 ```
 **Step 2.**  Upload the result to the [evaluation server](https://eval.ai/web/challenges/challenge-page/356/)
 The result named "nuscenes_results.json" is in the folder "nuscenes" in the parent folder of the tested checkpoint.
@@ -69,22 +69,22 @@ The result named "nuscenes_results.json" is in the folder "nuscenes" in the pare
 **Step 1.**  Generate the result
 If the modality of checkpoint is camera, run the following command:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --eval  --ckpt <PATH_TO_CHECKPOINT>
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --eval  --ckpt <PATH_TO_CHECKPOINT>
 ```
 If the modality of checkpoint is LiDAR, change the command as follow:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --eval  --ckpt <PATH_TO_CHECKPOINT>
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --eval  --ckpt <PATH_TO_CHECKPOINT>
 ```
 ### Training
 **Step 0.** Train the teacher
 Training of the detector of one <MODALITY>:
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_<MODALITY>_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_<MODALITY>_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml
 ```
 **Step 1.**  Train the student
-Put the checkpoint of the teachers to `perceptron/exps/multisensor_fusion/BEVFusion/tmp/`. Train the teacher of <MODALITY_1> and student of <MODALITY_2>
+Put the checkpoint of the teachers to `unidistill/exps/multisensor_fusion/BEVFusion/tmp/`. Train the teacher of <MODALITY_1> and student of <MODALITY_2>
 ```shell
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 perceptron/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_<MODALITY_2>_exp_distill_<MODALITY_1>.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_<MODALITY_2>_exp_distill_<MODALITY_1>.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml
 ```
 ## Citation
 If you find this project useful in your research, please consider citing:
