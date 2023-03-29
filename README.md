@@ -58,6 +58,7 @@ The directory will be as follows.
 **Step 0.** Download the [checkpoint models](https://drive.google.com/file/d/1TNqjJoqUhYP2_qZncPStF1mnRV4__sUB/view?usp=share_link)
 
 **Step 1.**  Generate the result
+
 If the modality of checkpoint is camera, run the following command:
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --infer  --ckpt <PATH_TO_CHECKPOINT>
@@ -67,11 +68,13 @@ If the modality of checkpoint is LiDAR, change the command as follow:
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --infer  --ckpt <PATH_TO_CHECKPOINT>
 ```
 **Step 2.**  Upload the result to the [evaluation server](https://eval.ai/web/challenges/challenge-page/356/)
+
 The result named "nuscenes_results.json" is in the folder "nuscenes" in the parent folder of the tested checkpoint.
 ### Evaluation
 **Step 0.** Download the checkpoint models as in "Testing"
 
 **Step 1.**  Generate the result
+
 If the modality of checkpoint is camera, run the following command:
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_camera_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml --eval  --ckpt <PATH_TO_CHECKPOINT>
@@ -82,6 +85,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node
 ```
 ### Training
 **Step 0.** Train the teacher
+
 Training of the detector of one <MODALITY>:
 ```shell
 CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 unidistill/exps/multisensor_fusion/nuscenes/BEVFusion/BEVFusion_nuscenes_centerhead_<MODALITY>_exp.py -d 0-3 -b 1 -e 20 --sync_bn 1 --no-clearml
